@@ -32,6 +32,12 @@ public class adminuserContral {
     @Resource
     adminService adminservice;
 
+
+    /*
+    this is a test
+
+     */
+
     /**
     *@Author Gaohongming
     *@Description: 管理员注册  传入完整的用户信息  需要初始化一下信息
