@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.look.picture.judgeLabel.dao.judgeLabelDao">
+
+
+    <insert id="saveLabelAtFirst" parameterType="judgetable" useGeneratedKeys="true" keyProperty="id" flushCache="true">
+        insert into judgetable (label1,label2,label3,label4,label5,label6,label7,label8,label9,label10,Flag1,Flag2,Flag3,Flag4,Flag5,Flag6,Flag7,Flag8,Flag9,Flag10,imageId,state,labelNum,useNum,imageUrl)
+        VALUES (#{label1},#{label2},#{label3},#{label4},#{label5},#{label6},#{label7},#{label8},#{label9},#{label10},#{Flag1},#{Flag2},#{Flag3},#{Flag4},#{Flag5},#{Flag6},#{Flag7},#{Flag8},#{Flag9},#{Flag10},#{imageId},#{state},#{labelNum},#{useNum},#{imageUrl})
+    </insert>
+
+    <insert id="saveUserUpImageInfo" parameterType="appImageGrouping" >
+        insert into preservation (imageId1,imageId2,imageId3,imageId4,imageId5,imageId6,label1,label2,label3,label4,label5,label6,imageUrl1,imageUrl2,imageUrl3,imageUrl4,imageUrl5,imageUrl6,SecondlabelName,pushWay,userId,setTime,Flag,titleName,imageNum)
+        VALUES (#{imageId1},#{imageId2},#{imageId3},#{imageId4},#{imageId5},#{imageId6},#{label1},#{label2},#{label3},#{label4},#{label5},#{label6},#{imageUrl1},#{imageUrl2},#{imageUrl3},#{imageUrl4},#{imageUrl5},#{imageUrl6},#{SecondlabelName},#{pushWay},#{userId},#{setTime},#{Flag},#{titleName},#{imageNum})
+    </insert>
+    <select id="getJudgeTableInfoByImageId" parameterType="int" resultType="judgetable">
+        SELECT * FROM judgetable WHERE imageId=#{id}
+    </select>
+    <update id="ChangeUserUpImageInfo" parameterType="appImageGrouping" >
+        UPDATE preservation SET label1=#{label1},label2=#{label2},label3=#{label3},label4=#{label4},label5=#{label5},label6=#{label6},Flag=#{Flag} WHERE id=#{id}
+    </update>
+<update id="ChangeJudgeInfo" parameterType="judgetable" >
+    update judgetable set label1 =#{label1},label2 =#{label2},label3 =#{label3},label4=#{label4},label5=#{label5},label6=#{label6},label7=#{label7},label8=#{label8},label9=#{label9},label10=#{label10},
+    Flag1=#{Flag1},  Flag2=#{Flag2}, Flag3=#{Flag3}, Flag4=#{Flag4}, Flag5=#{Flag5}, Flag6=#{Flag6}, Flag7=#{Flag7}, Flag8=#{Flag8}, Flag9=#{Flag9}, Flag10=#{Flag10},labelNum=#{labelNum},useNum=#{useNum} where id=#{id};
+</update>
+</mapper>
+

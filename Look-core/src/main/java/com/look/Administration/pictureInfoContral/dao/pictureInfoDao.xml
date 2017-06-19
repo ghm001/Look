@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.look.Administration.pictureInfoContral.dao.pictureInfoDao">
+
+
+
+        <select id="gettest" resultType="test">
+                select *,count(*) as num  from tbtest group by label order by num desc limit 3;
+
+        </select>
+        <select id="getoriginPicture" resultType="originPushtable" >
+                SELECT * FROM originpushtable WHERE 1=1
+        </select>
+
+        <select id="getFinishtable" resultType="FinshPictureModel">
+                SELECT * FROM finishtable WHERE 1=1
+        </select>
+        <select id="getCanPushPicture" resultType="imageInfo">
+                SELECT * FROM imageinfo WHERE imageFlag='P'
+        </select>
+
+</mapper>
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Look.iml" filepath="$PROJECT_DIR$/Look.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Look-app/Look-app.iml" filepath="$PROJECT_DIR$/Look-app/Look-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Look-core/Look-core.iml" filepath="$PROJECT_DIR$/Look-core/Look-core.iml" />
+    </modules>
+  </component>
+</project>

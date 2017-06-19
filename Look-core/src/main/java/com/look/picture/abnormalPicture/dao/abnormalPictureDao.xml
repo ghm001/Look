@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.look.picture.abnormalPicture.dao.abnormalPictureDao">
+
+
+    <select id="getPictureInfoFromAbnormal" parameterType="int" resultType="abnormalimage">
+        SELECT * FROM abnormalimage WHERE imageId=#{id}
+    </select>
+
+    <insert id="saveAbnormalInfo" parameterType="abnormalimage" useGeneratedKeys="true" keyProperty="id" >
+        insert into abnormalimage (imageId,judgetableId,AdminId,productTime,labels,imageUrl)VALUES (#{imageId},#{judgetableId},#{AdminId},#{productTime},#{labels},#{imageUrl})
+    </insert>
+
+    <update id="ChangeAbnormalInfo" parameterType="abnormalimage" >
+        UPDATE abnormalimage SET labels=#{labels} WHERE id=#{id}
+    </update>
+
+</mapper>
+

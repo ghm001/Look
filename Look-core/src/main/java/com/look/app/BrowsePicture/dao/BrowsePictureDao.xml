@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.look.app.BrowsePicture.dao.BrowsePictureDao">
+
+
+
+    <select id="getPictureForRandom" resultType="FinshPictureModel">
+        SELECT * FROM finishtable WHERE id >= ((SELECT MAX(id) FROM finishtable)-(SELECT MIN(id) FROM finishtable)) * RAND() + (SELECT MIN(id) FROM finishtable)  LIMIT 12
+    </select>
+
+    <select id="getMostFirst" resultType="FirstLabelGroup">
+        select FirstLabelId,count(*) as num  from finishtable group by FirstLabelId order by num desc limit 30;
+    </select>
+
+    <select id="getPictureFromId" resultType="FinshPictureModel">
+        SELECT * FROM finishtable WHERE FirstLabelId=#{id}
+    </select>
+
+</mapper>
+

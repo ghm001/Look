@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.look.Administration.upimage.dao.upimageDao">
+
+<insert id="saveImageInfo" parameterType="imageInfo" useGeneratedKeys="true" keyProperty="id" flushCache="true">
+INSERT INTO  imageinfo (imageUrl,adminId,upTime,pushTime,finishTime,adminName,imageFlag)VALUES (#{imageUrl},#{adminId},#{upTime},'','',#{adminName},#{imageFlag})
+
+</insert>
+
+<delete id="deleteImageInfo" parameterType="int">
+    DELETE * FROM imageinfo WHERE id =#{id};
+</delete>
+    <update id="ChangeImageFlag" parameterType="imageInfo">
+        UPDATE imageinfo set pushTime=#{pushTime},imageFlag=#{imageFlag} WHERE id=#{id}
+    </update>
+    <select id="getImageInfoFromImageId" parameterType="int" resultType="imageInfo">
+        SELECT * FROM imageinfo WHERE  id=#{id}
+    </select>
+    <update id="SaveFinishTime" parameterType="imageInfo">
+        UPDATE imageinfo set finishTime=#{finishTime},imageFlag=#{imageFlag} WHERE id=#{id}
+    </update>
+    <select id="getallImageInfo" resultType="imageInfo" >
+        select * from imageinfo where 1=1
+    </select>
+
+</mapper>
+

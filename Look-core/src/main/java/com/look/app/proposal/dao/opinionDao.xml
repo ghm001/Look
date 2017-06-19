@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.look.app.proposal.dao.opinionDao">
+
+
+    <insert id="insertInfo" parameterType="opinion" useGeneratedKeys="true" keyProperty="id"  flushCache="true" >
+        insert into opinion(uId,title,uptime,userImageUrl,userNickname) values(#{uId},#{title},#{uptime},#{userImageUrl},#{userNickname})
+    </insert>
+
+    <select id="getAllOffer" resultType="opinion">
+        SELECT * FROM opinion WHERE 1=1
+    </select>
+</mapper>
+

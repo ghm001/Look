@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.look.picture.pushPicture.dao.pushPictureDao">
+
+<insert id="saveOriginPicrureInfo" useGeneratedKeys="true" parameterType="originPushtable" keyProperty="id">
+    insert into originPushtable (adminId,imageId,produceTime,adminName,imageUrl)
+    VALUES (#{adminId},#{imageId},#{produceTime},#{adminName},#{imageUrl})
+</insert>
+
+    <insert id="savePushtable" useGeneratedKeys="true" keyProperty="id" parameterType="originPushtable">
+        INSERT  into pushtable (producerId,firstId,secondId,thirdId,fourId,fifthId,imageUrl,imageId,produceName,adminId,produceTime)
+        VALUES (#{producerId},#{firstId},#{secondId},#{thirdId},#{fourId},#{fifthId},#{imageUrl},#{imageId},#{produceName},#{adminId},#{produceTime})
+    </insert>
+
+    <select id="getMostClassifcation" resultType="mostclassification">
+        select secondId,count(*) as num  from pushtable group by secondId order by num desc limit 6;
+    </select>
+
+    <select id="getMostFirstId" resultType="mostclassification">
+        select secondId,count(*) as num  from pushtable group by firstId order by num desc limit 6;
+    </select>
+    <select id="getSixPictureLimitSecondId" resultType="pushtable" parameterType="int">
+        SELECT * FROM pushtable WHERE secondId=#{secondId} limit 6;
+    </select>
+
+    <select id="getHobbyPushByFirstId" parameterType="int" resultType="pushtable">
+        SELECT * from pushtable where firstId=#{id}
+    </select>
+
+    <select id="getOriginPush" resultType="originPushtable">
+        SELECT * FROM originpushtable WHERE id >= ((SELECT MAX(id) FROM originpushtable)-(SELECT MIN(id) FROM originpushtable)) * RAND() + (SELECT MIN(id) FROM originpushtable)  LIMIT 12
+    </select>
+    <select id="getFirstMax" resultType="mostFirstLabel">
+        select firstId,count(*) as num  from pushtable group by firstId order by num desc limit 3;
+    </select>
+
+    <select id="getSecondByFirstLabelId" resultType="pushtable">
+        SELECT * from pushtable WHERE firstId=#{firstId} limit 30
+    </select>
+   <delete id="deleteInfoFromOriginTable" parameterType="int">
+       DELETE * FROM originpushtable WHERE imageId=#{id}
+   </delete>
+    <delete id="deleteInfoFromPushTable" parameterType="int">
+        DELETE * FROM pushtable WHERE imageId=#{id}
+    </delete>
+    <select id="getOrifinPushById" resultType="originPushtable" parameterType="int">
+        SELECT * FROM originpushtable WHERE id=#{id}
+    </select>
+    <select id="getPushInfoByImageId" resultType="pushtable" parameterType="int">
+        SELECT * from pushtable where imageId=#{id}
+    </select>
+</mapper>
+

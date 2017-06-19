@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.look.app.Integral.dao.IntegralDao">
+
+
+<insert id="saveOneRecord" parameterType="IntegralHistory" useGeneratedKeys="true" keyProperty="id">
+    insert into integral (userId,Prodata,explan,operation,operationNum) VALUES (#{userId},#{Prodata},#{explan},#{operation},#{operationNum})
+</insert>
+
+    <insert id="UserIntegrareduce" parameterType="IntegralHistory" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO integral (userId,Prodata,explan,operation,operationNum) VALUES (#{userId},#{Prodata},#{explan},#{operation},#{operationNum})
+    </insert>
+
+    <select id="getUserIntegraHistory" parameterType="int" resultType="IntegralHistory">
+        SELECT * FROM integral WHERE userId=#{id} order by id DESC
+    </select>
+    <select id="getAllHistory" resultType="IntegralHistory">
+        SELECT * FROM integral WHERE 1=1
+    </select>
+</mapper>
+

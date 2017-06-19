@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.look.app.HistoricaRecord.dao.HistoriRecordDao">
+
+
+
+    <select id="getUserHistory" resultType="appImageGrouping" parameterType="int">
+        SELECT * FROM preservation WHERE userId=#{id} order by id DESC
+    </select>
+
+    <delete id="deleteHistoryById" parameterType="int">
+        delete FROM preservation WHERE id=#{id}
+    </delete>
+
+
+
+</mapper>
+

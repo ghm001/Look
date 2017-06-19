@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.look.Administration.labelutil.dao.labelDao">
+
+
+    <select id="searchFirst" parameterType="java.lang.String" resultType="first">
+        SELECT * FROM first WHERE labelOne LIKE #{label}
+    </select>
+    <select id="searchSecond" parameterType="java.lang.String" resultType="second">
+        SELECT * FROM second WHERE labelSecond LIKE #{label}
+    </select>
+    <select id="searchFifth" parameterType="java.lang.String" resultType="fifth">
+        SELECT * FROM fifth WHERE labelFifth LIKE #{label}
+    </select>
+    <select id="searchFourth" parameterType="java.lang.String" resultType="fourth">
+        SELECT * FROM fourth WHERE labelFourth LIKE #{label}
+    </select>
+    <select id="searchThird" parameterType="java.lang.String" resultType="third">
+        SELECT * FROM third WHERE labelThird LIKE #{label}
+    </select>
+
+
+    <select id="getfirstInfo" parameterType="int" resultType="first">
+        SELECT * FROM first WHERE id =#{id}
+    </select>
+    <select id="getsecondInfo" parameterType="int" resultType="second">
+        SELECT * FROM second WHERE id =#{id}
+    </select>
+    <select id="getThirdInfo" parameterType="int" resultType="fifth">
+        SELECT * FROM third WHERE id =#{id}
+    </select>
+    <select id="getFourthInfo" parameterType="int" resultType="fourth">
+        SELECT * FROM fourth WHERE id =#{id}
+    </select>
+    <select id="getFifthInfo" parameterType="int" resultType="third">
+        SELECT * FROM fifth WHERE id =#{id}
+    </select>
+
+<select id="getfirstByLabelName" parameterType="java.lang.String" resultType="first">
+     SELECT * FROM first WHERE labelOne LIKE #{s}
+</select>
+
+
+</mapper>
+

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.look.app.user.dao.UserDao">
+
+
+    <select id="JudgeUser" parameterType="java.lang.String" resultType="Integer">
+        SELECT * FROM user WHERE phoneNumber=#{phoneNumber}
+    </select>
+
+    <insert id="SaveUser" parameterType="java.lang.String"  useGeneratedKeys="true" flushCache="true">
+        INSERT INTO user (phoneNumber,passWord,userHeadImage,userNickName,PushFlag,num,integral,userFlag,userHobby)
+         VALUES (#{phoneNumber},#{passWord},'https://obs.myhwclouds.com/look.admin.photo/1176473685/adminB.png',#{phoneNumber},'Y',0,0,'N','')
+    </insert>
+
+    <update id="ChangeUserPassword" parameterType="string" >
+        UPDATE user set passWord=#{passWord} WHERE phoneNumber=#{phoneNumber}
+    </update>
+    <select id="getUserInfoByID" resultType="user" parameterType="Integer">
+        SELECT * FROM user WHERE id=#{id}
+    </select>
+
+    <select id="getHobby" resultType="first" >
+        SELECT * FROM first
+    </select>
+    <update id="ChangeUserInfo" parameterType="user" >
+        UPDATE user set userHeadImage=#{userHeadImage},userNickName=#{userNickName},userAge=#{userAge},userHobby=#{userHobby},phoneNumber=#{phoneNumber},userAge=#{userAge}
+        WHERE id=#{id};
+    </update>
+
+    <select id="JudegOtherLogin" parameterType="java.lang.String" resultType="Integer">
+        SELECT * FROM user WHERE otherLogin=#{otherLogin}
+    </select>
+
+    <insert id="saveOtherLogin" parameterType="user"  useGeneratedKeys="true"  flushCache="true">
+        INSERT INTO user (phoneNumber,passWord,userHeadImage,userNickName,PushFlag,num,integral,userFlag,userHobby,otherLogin)
+        VALUES ('','',#{userHeadImage},#{userNickName},'Y',0,0,'Y','',#{otherLogin})
+    </insert>
+
+    <select id="getOtherLogin" parameterType="java.lang.String"  resultType="user">
+        SELECT * FROM user WHERE otherLogin=#{otherLogin}
+    </select>
+    <select id="getUser" parameterType="java.lang.String"  resultType="user">
+        SELECT * FROM user where phoneNumber=#{phoneNumber} and passWord=#{passWord}
+    </select>
+    <update id="ChangeLoginFlag" parameterType="int">
+        UPDATE user set userFlag='Y' WHERE id=#{id}
+    </update>
+    <update id="outLogin" parameterType="int">
+        update user set userFlag='N' WHERE id=#{id}
+    </update>
+    <update id="ChangeUserIntrgral" parameterType="user">
+        UPDATE user set integral=#{integral} WHERE id=#{id}
+    </update>
+
+    <select id="GetAllUserInfo" resultType="user">
+        SELECT * FROM user WHERE 1=1
+    </select>
+</mapper>
+
