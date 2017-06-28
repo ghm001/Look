@@ -59,7 +59,7 @@ public class adminServiceImplTest {
     @Test
     public void setAdminInfo()
     {
-        adminB a=new adminB();
+        /*adminB a=new adminB();
         a.setUserName("腾讯");
         a.setPassWord("123456");
         a.setCardId("110110110");
@@ -73,7 +73,8 @@ public class adminServiceImplTest {
         a.setLoginIp("110.110.110");
         a.setNickName("Daney");
         adminservice.setAdminInfo(a);
-        System.out.println(a.getId());
+        System.out.println(a.getId());*/
+
     }
     //测试修改管理员信息
     @Test

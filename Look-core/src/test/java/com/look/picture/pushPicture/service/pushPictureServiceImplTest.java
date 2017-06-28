@@ -37,13 +37,13 @@ public class pushPictureServiceImplTest {
     @Test
     public void testsaveOriginPicrureInfo()
     {
-        originPushtable  origintable=new originPushtable();
+     /*   originPushtable  origintable=new originPushtable();
         origintable.setAdminId(1);
         origintable.setImageUrl("test1");
         origintable.setImageId(1);
         origintable.setProduceTime("test2");
         origintable.setAdminName("test3");
-        pushservice.saveOriginPicrureInfo(origintable);
+        pushservice.saveOriginPicrureInfo(origintable);*/
     }
 
     @Test
@@ -67,7 +67,7 @@ public class pushPictureServiceImplTest {
     @Test
     public void testgetHotPush()
     {
-        Map<String ,Object> map=new HashMap<String,Object>();
+       /* Map<String ,Object> map=new HashMap<String,Object>();
         //存放种类最多的六个数据 目前数据太少，暂定为一级
         List<mostclassification> list= pushservice.getMostClassifcation();
         //List<mostFirstId> list=pushservice.getMostFirstId();
@@ -100,7 +100,7 @@ public class pushPictureServiceImplTest {
         }
         map.put("TAG","热门分类");
         map.put("picyure",appImageGroupinglist);
-        System.out.println(JsonUtil.mapJson(map));
+        System.out.println(JsonUtil.mapJson(map));*/
 
     }
 
@@ -119,7 +119,7 @@ public class pushPictureServiceImplTest {
           /*
         进行随机推送
          */
-          int temp=0;
+      /*    int temp=0;
         Map<String ,Object> map=new HashMap<String,Object>();
         List<originPushtable> list=pushservice.getOriginPush();
         List<appImageGrouping> pushlist=new ArrayList<appImageGrouping>();
@@ -141,13 +141,13 @@ public class pushPictureServiceImplTest {
         map.put("TAG","随机推送");
         map.put("picture",pushlist);
 
-        System.out.println(JsonUtil.mapJson(map));
+        System.out.println(JsonUtil.mapJson(map));*/
     }
 
 @Test
 public void testjudge()
 {
-    List<appImageGrouping> list=new ArrayList<appImageGrouping>();
+   /* List<appImageGrouping> list=new ArrayList<appImageGrouping>();
     List<pushtable> push=pushservice.getHobbyPushByFirstId(39);
     appImageGrouping imageGroup=new appImageGrouping();
     for (int j = 0; j <6 ; j++) {
@@ -162,7 +162,7 @@ public void testjudge()
     imageGroup.setPushWay("兴趣推送");
     imageGroup.setImageNum(6);
     list.add(imageGroup);
-    System.out.println(JsonUtil.listJson(list));
+    System.out.println(JsonUtil.listJson(list));*/
 }
 
     @Test

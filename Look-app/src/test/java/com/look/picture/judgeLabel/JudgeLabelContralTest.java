@@ -61,7 +61,7 @@ public class JudgeLabelContralTest {
     @Test
     public void judgeUserUpInageLabelInfo() throws Exception {
 
-        boolean isBronPush=false;
+      /*  boolean isBronPush=false;
         int temp2 = 0;  //记录去除的标签的遍历状态
         appImageGrouping appGroup = new appImageGrouping();
       String appGroupInfoJson="{\n" +
@@ -632,7 +632,7 @@ public class JudgeLabelContralTest {
         String[] q=l.split("/");
 
 
-        System.out.println(l.split("/")[l.split("/").length-1]);
+        System.out.println(l.split("/")[l.split("/").length-1]);*/
     }
 
         @Test

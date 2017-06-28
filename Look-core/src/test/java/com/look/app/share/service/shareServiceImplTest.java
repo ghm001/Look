@@ -54,7 +54,7 @@ public class shareServiceImplTest {
     }
     @Test
     public void getSomeShare() throws Exception {
-        List<share> list=shservice.getSomeShare(11);
+       /* List<share> list=shservice.getSomeShare(11);
         System.out.println(list.size());
         for (int i=0;i<list.size();i++)
         {
@@ -67,7 +67,7 @@ public class shareServiceImplTest {
         System.out.println(JsonUtil.mapJson(m));
 
         JsonObject jsonObject = new JsonObject();
-
+*/
     }
 
 }

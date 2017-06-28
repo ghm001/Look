@@ -1,7 +1,10 @@
 package com.look.app.BrowsePicture.service;
 
+import com.google.gson.JsonArray;
 import com.look.Administration.labelutil.model.first;
 import com.look.Administration.labelutil.service.labelservice;
+import com.look.Administration.upimage.model.imageInfo;
+import com.look.Administration.upimage.service.upimageService;
 import com.look.app.BrowsePicture.model.FirstLabelGroup;
 import com.look.app.user.model.user;
 import com.look.app.user.service.UserService;
@@ -11,7 +14,9 @@ import com.look.picture.pushPicture.model.mostFirstLabel;
 import com.look.picture.pushPicture.model.pushtable;
 import com.look.picture.pushPicture.service.pushPiceturService;
 import com.look.utils.JsonUtil;
+import com.look.utils.nameUtil.SetNameUtilService;
 import com.look.utils.setObjValueUtil;
+import org.json.JSONArray;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,10 +24,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -40,6 +42,8 @@ public class BrowsePictureServiceTest {
     UserService userservice;
     @Resource
     pushPiceturService pushService;
+    @Resource
+    upimageService   upimageservice;
     /*
     每日推荐
      */
@@ -80,10 +84,12 @@ public class BrowsePictureServiceTest {
               }
                  setObjValueUtil.setAttributeValueFromObj("imageId",a,temp,finList.get(j-1).getImageId());
                   setObjValueUtil.setAttributeValueFromObj("label",a,temp,finList.get(j-1).getLabels());
+                setObjValueUtil.setAttributeValueFromObj("imageUrl",a,temp,finList.get(j-1).getImageUrl());
             }
             a.setSecondlabelName(f.getLabelOne());
             appImageFroupList.add(a);
         }
+
         System.out.println(JsonUtil.listJson(appImageFroupList));
     }
 
@@ -118,8 +124,7 @@ public class BrowsePictureServiceTest {
             imageGroup.setImageNum(6);
             list.add(imageGroup);
         }
-        map.put("TAG","美图浏览");
-        map.put("picture",list);
+        System.out.println(JsonUtil.listJson(list));
 
     }
 
@@ -127,6 +132,40 @@ public class BrowsePictureServiceTest {
     public void otherPush()
     {
         List<FinshPictureModel> list=browsepicture.getPictureForRandom();
+        System.out.println(JsonUtil.listJson(list));
 
+    }
+
+    @Test
+    public void getFinishPictureAll()
+    {
+        List<FinshPictureModel> list=browsepicture.getAll();
+        List<String> list3=new ArrayList<String>();
+        List<Map<String,Object> > list1=new ArrayList<Map<String, Object>>();
+        JsonArray j=new JsonArray();
+        for (int i = 0; i < list.size(); i++) {
+            Map <String,Object> a=new HashMap<String, Object>();
+            a.put("picture_name","picture"+i+".jpg");
+            a.put("finish_time",list.get(i).getFinishTime()+"T"+ (new Random().nextInt(23)+1)+":"+(new Random().nextInt(59)+1)+":"+(new Random().nextInt(59)+1)+"Z");
+            a.put("labels",list.get(i).getLabels().split("-"));
+            int id=list.get(i).getImageId();
+            imageInfo f=upimageservice.getImageInfoFromImageId(id);
+            a.put("url",f.getImageUrl());
+
+            StringBuffer s =new StringBuffer();
+           s.append(" <p> ");
+            s.append(JsonUtil.mapJson(a));
+            s.append(" </p> ");
+            System.out.println(s.toString());
+           // String json="<p>"+JsonUtil.mapJson(a)+"</p>";
+           // System.out.println(json);
+            list3.add(s.toString());
+            list1.add(a);
+
+        }
+
+
+       // System.out.println(JsonUtil.listJson(list1));
+        System.out.println(JsonUtil.listJson(list3));
     }
 }

@@ -41,6 +41,10 @@
      SELECT * FROM first WHERE labelOne LIKE #{s}
 </select>
 
+    <select id="getfirstAllInfo" resultType="first" >
+        SELECT * FROM first WHERE 1=1
+    </select>
+
 
 </mapper>
 

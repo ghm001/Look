@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by gaohongming on 2017/4/21.
@@ -41,13 +44,29 @@ public class shareContral {
     @RequestMapping(value="/look/app/saveShare",method = {RequestMethod.POST,RequestMethod.GET},produces = "text/plain;charset=UTF-8")
     public String saveShare(HttpServletRequest request)
     {
+        Map<String,Object> obj=new HashMap<String,Object>();
         String sharejson= request.getParameter("share");
-        System.out.println(sharejson);
+
         share sh= new share();
         sh=  (share) JsonUtil.jsonToObj(sharejson,share.class);
+
+
+        System.out.println(sh.getImageNum()+"----"+sh.getUserNickName()+"----"+sh.getId()+"-----");
+
         sh= appUpImageUtil.upImageForShare(sh);
+        System.out.println(sh.getImageUrl1()+"************");
+        System.out.println(sh.getImageUrl2()+"**********");
+
+
+
+        System.out.println(sh.toString());
         shervice.saveShare(sh);
-        return ReturnUtil.success();
+
+
+        obj.put("TAG","success");
+        obj.put("share",sh);
+        System.out.println(JsonUtil.mapJson(obj));
+        return JsonUtil.mapJson(obj);
     }
 
 

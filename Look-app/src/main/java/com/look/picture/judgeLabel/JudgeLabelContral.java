@@ -83,6 +83,7 @@ public class JudgeLabelContral {
         if(appGroup.getFlag().equals("N"))
         {
             appGroup.setFlag("S");//代表保存的S
+            appGroup.setSecondlabelName("生活场景");
             judgelabelservice.saveUserUpImageInfo(appGroup);
         }else
         {
@@ -109,7 +110,7 @@ public class JudgeLabelContral {
         System.out.println("接受到标签数据"+appGroupInfoJson);
         appGroup = (appImageGrouping) JsonUtil.jsonToObj(appGroupInfoJson, appImageGrouping.class);
         appGroup.setSetTime(SetNameUtil.getAccurateTime());
-
+        appGroup.setSecondlabelName("生活场景");
         //得到用户的信息
         //改变用户的积分状态   记录积分的增加
         //记录本次标签的状态  preservation表   并且设定为提交的

@@ -21,9 +21,9 @@ public class judgeLabelServiceImplTest {
     @Test
     public void saveLabelAtFirst() throws Exception {
 
-        judgetable  j=new judgetable();
+      /*  judgetable  j=new judgetable();
         judgeservice.saveLabelAtFirst(j);
-        System.out.println(j.getId());
+        System.out.println(j.getId());*/
     }
 
 }

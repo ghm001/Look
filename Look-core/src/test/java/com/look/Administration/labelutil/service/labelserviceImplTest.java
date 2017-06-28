@@ -1,6 +1,7 @@
 package com.look.Administration.labelutil.service;
 
 import com.look.Administration.labelutil.model.*;
+import com.look.utils.JsonUtil;
 import com.look.utils.Similaritydegree.labelSimilarity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -71,8 +73,17 @@ public class labelserviceImplTest {
     @Test
     public void getFirstBylabelName()
     {
-        first f=labelsearcher.getfirstByLabelName("林业产品");
-        System.out.println(f.toString());
+
+    }
+    @Test
+    public void getFirst()
+    {
+        List<first> f=labelsearcher.getfirstAllInfo();
+        List<String> str=new ArrayList<String>();
+        for (int i = 0; i < f.size(); i++) {
+            str.add(f.get(i).getLabelOne());
+        }
+        System.out.println(JsonUtil.listJson(str));
     }
 
 }

@@ -54,7 +54,7 @@ public class TestPushContralTest {
 @Test
 public void removeS()
 {
-   List<FinshPictureModel> f=finish.getAllPicture();
+  /* List<FinshPictureModel> f=finish.getAllPicture();
     for (int i = 0; i <f.size() ; i++) {
         String url=f.get(i).getImageUrl();
         int j=url.indexOf("s");
@@ -63,7 +63,7 @@ public void removeS()
         q.setImageUrl(url);
         finish.changeUrl(q);
 
-   }
+   }*/
 
 
 }

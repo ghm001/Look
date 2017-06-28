@@ -30,4 +30,9 @@ public class BrowsePictureServiceImpl implements BrowsePictureService {
     public List<FinshPictureModel> getPictureFromId(int id) {
         return browsePictureDao.getPictureFromId(id);
     }
+
+    @Override
+    public List<FinshPictureModel> getAll() {
+        return browsePictureDao.getAll();
+    }
 }

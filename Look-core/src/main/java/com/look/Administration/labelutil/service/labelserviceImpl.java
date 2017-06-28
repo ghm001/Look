@@ -127,5 +127,10 @@ public class labelserviceImpl implements labelservice {
         return labeldao.getfirstByLabelName(s);
     }
 
+    @Override
+    public List<first> getfirstAllInfo() {
+        return labeldao.getfirstAllInfo();
+    }
+
 
 }

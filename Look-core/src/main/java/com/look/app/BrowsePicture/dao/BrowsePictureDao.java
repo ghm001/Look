@@ -19,4 +19,6 @@ public interface BrowsePictureDao {
     List<FirstLabelGroup> getMostFirst();
 
     List<FinshPictureModel> getPictureFromId(int id);
+
+    List<FinshPictureModel> getAll();
 }

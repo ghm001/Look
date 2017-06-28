@@ -2,10 +2,12 @@ package com.look.utils.nameUtil;
 
 import com.look.picture.pushPicture.model.appImageGrouping;
 
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by gaohongming on 2017/4/28.
@@ -41,9 +43,8 @@ public static String getImageNaem(String userName,String FileName,String time)
     *@Data 22:55 2017/5/16
     */
     public static void main(String[] args) {
-       String test= shareSetName("高红明",1);
-        System.out.println(test);
-        System.out.println(getAccurateTime());
+        System.out.println(gethours());
+        System.out.println((new Random().nextInt(23)+1));
     }
     /**
     *@Author Gaohongming
@@ -89,7 +90,16 @@ public static String getImageNaem(String userName,String FileName,String time)
          return time;
      }
 
-     public static List<appImageGrouping> ChangeTimeStyle(List<appImageGrouping>  list)
+    public static String gethours()
+    {
+        Date date=new Date();
+        //以天来进行划分
+        DateFormat dateFormat=new SimpleDateFormat("HH:mm:ss");
+        String time=dateFormat.format(date);
+        return time;
+    }
+
+    public static List<appImageGrouping> ChangeTimeStyle(List<appImageGrouping>  list)
      {
          for (int i = 0; i < list.size(); i++) {
              String[] b=list.get(i).getSetTime().split("-");

@@ -121,9 +121,12 @@ public class UserContral {
     @RequestMapping(value="/look/app/ChangeUserInfo",method = {RequestMethod.POST,RequestMethod.GET},produces = "text/plain;charset=UTF-8")
     public String ChangeUserInfo(HttpServletRequest request)
     {
+        Map<String,String> map=new HashMap<String, String>();
+
         System.out.println("用户进行修改信息");
         user u=new user();
         String userjson= request.getParameter("user");
+        u.setPhoneNumber("17843128994");
         System.out.println("用户数据"+userjson.toString());
         u=(user)JsonUtil.jsonToObj(userjson,user.class);
         System.out.println("用户对象"+u.toString());
@@ -140,7 +143,9 @@ public class UserContral {
         u.setUserHeadImage(url);
         up.start();
         userservice.ChangeUserInfo(u);
-        return ReturnUtil.success();
+        map.put("tag","success");
+        map.put("url",u.getUserHeadImage());
+        return JsonUtil.mapJson(map);
     }
 
 
@@ -202,8 +207,10 @@ public class UserContral {
         System.out.println("用户进行账号密码登录");
         String phoneNumber=request.getParameter("phoneNumber");
         String passWord=request.getParameter("passWord");
+        System.out.println(phoneNumber+"---"+passWord);
         System.out.println("用户"+phoneNumber+"-----"+passWord);
         user u=new user();
+        u.setPhoneNumber("17843128994");
         u.setId(0);
         try {
             u = userservice.getUser(phoneNumber, passWord);

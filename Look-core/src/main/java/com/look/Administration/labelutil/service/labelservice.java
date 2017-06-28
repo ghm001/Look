@@ -23,4 +23,6 @@ public interface labelservice {
     fifth  getFifthInfo(int id);
 
     first getfirstByLabelName(String s);
+
+    List<first> getfirstAllInfo();
 }

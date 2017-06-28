@@ -39,7 +39,7 @@ public class UserServiceImplTest {
     @Test
     public void testgetUserInfoByID()
     {
-        opinion o=new opinion();
+    /*    opinion o=new opinion();
         o.settitle("test");
         o.setUptime("2015");
         o.setuId(1);
@@ -61,7 +61,7 @@ public class UserServiceImplTest {
         o.setUserNickname(u.getUserNickName());
         //将完整信息写入到数据库中
         int num= opiniona.insertInfo(o);
-        System.out.println(num);
+        System.out.println(num);*/
     }
 
     //测试登陆

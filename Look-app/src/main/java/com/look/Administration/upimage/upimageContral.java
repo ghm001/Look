@@ -74,53 +74,11 @@ public class upimageContral {
     *@return:
     *@Data 23:05 2017/5/16
     */
+    @ResponseBody
     @RequestMapping("/moreUpload")
     public String moreUpload(HttpServletRequest request){
 
-
-        //先进行转换
-       System.out.println("进入多文件上传之中");
-        System.out.println(request.getParameter("login"));
-        System.out.println(request.getParameter("formData"));
-        System.out.println(request.getParameter("loginName"));
-        System.out.println(request.toString());
-        MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
-        Map<String, MultipartFile> files = multipartHttpServletRequest.getFileMap();
-        System.out.println(multipartHttpServletRequest.getParameter("formData"));
-        System.out.println(multipartHttpServletRequest.getParameter("loginName"));
-        System.out.println(multipartHttpServletRequest.getParameter("login"));
-        String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "upload/";
-        System.out.println(uploadUrl);
-        File dir = new File(uploadUrl);
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-        int i=0;
-        List<String> fileList = new ArrayList<String>();
-        for (MultipartFile file :  files.values()) {
-            i=i+1;
-            System.out.println("----------------"+file.getName());
-            File targetFile = new File(uploadUrl + file.getOriginalFilename());
-            if (!targetFile.exists()) {
-                try {
-                    targetFile.createNewFile();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    file.transferTo(targetFile);
-
-                    fileList.add("http://localhost:8080/lesson5/upload/" + file.getOriginalFilename());
-                } catch (IllegalStateException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }
-        request.setAttribute("files", fileList);
-        return "moreUploadResult";
+        return ReturnUtil.success();
     }
 
 

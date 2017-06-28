@@ -38,7 +38,7 @@ public class upimageServiceImplTest {
         imahe.setId(1);
         imahe.setPushTime(SetNameUtilService.getAccurateTime());
         imahe.setImageFlag("P");
-        upimageservice.ChangeImageFlag(imahe);
+      //  upimageservice.ChangeImageFlag(imahe);
     }
 
 

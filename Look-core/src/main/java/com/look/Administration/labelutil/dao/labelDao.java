@@ -34,4 +34,6 @@ public interface labelDao {
     fifth getFifthInfo(int id);
 
     first getfirstByLabelName(String s);
+
+    List<first> getfirstAllInfo();
 }

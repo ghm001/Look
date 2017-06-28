@@ -30,6 +30,7 @@ public class appUpImageUtil {
         String[] imageContest=new String[shw.getImageNum()];
         for(int i=1;i<=shw.getImageNum();i++)
         {
+            System.out.println(shw.getImageNum());
             StringBuffer b=new StringBuffer("imageUrl");
             b.append(i);
             //这里本意是解决从说说对象中拿到图片数据，并放到一个数组中，依次传递给下级的图片上传
@@ -37,8 +38,10 @@ public class appUpImageUtil {
             //这里依次为图片进行命名
             imageName[i-1]= SetNameUtil.shareSetName(shw.getUserNickName(),i);
             String url="http://obs.myhwclouds.com/"+"look.app.share/"+imageName[i-1];
+            System.out.println(url);
             //将地址修改进bean对应的属性中
             setData(shw,b.toString(),url);
+            System.out.println("qqqqqqqqqqqqqqqqqqqqqqqq"+shw.getImageUrl1()+"--");
         }
         ThreadUpImage up=new ThreadUpImage();
         up.setBuctetName("look.app.share");
@@ -54,7 +57,11 @@ public class appUpImageUtil {
     public static void main(String[] args) {
         share shw = utilTest.getShare();
         long startTime=System.currentTimeMillis();   //获取开始时间
+
+
        appUpImageUtil.upImageForShare(shw);
+
+
         long endTime=System.currentTimeMillis(); //获取结束时间
         System.out.println("程序运行时间： "+(endTime-startTime)+"ms");
        System.out.println(shw.toString());
